@@ -1,0 +1,33 @@
+<div class="model-item">
+  <div class="header">
+    <p>category</p>
+    <p>{{ details?.category }}</p>
+  </div>
+  <div class="picture">
+    <div class="downloads">
+      <div class="square-details">
+        <p>{{ details.downloads }}</p>
+      </div>
+      <p class="label">Downloads</p>
+    </div>
+    <div class="canvas">
+      <app-avators></app-avators>
+    </div>
+  </div>
+  <div class="details">
+    <h3 class="name">{{ details.name }}</h3>
+    <p>
+      {{ details.description }}
+    </p>
+  </div>
+  <div class="footer">
+    <div class="footer-item">
+      <p>Vertices:</p>
+      <p>{{ details.vertices }}</p>
+    </div>
+    <div class="footer-item">
+      <p>License:</p>
+      <p>{{ details.license }}</p>
+    </div>
+  </div>
+</div>

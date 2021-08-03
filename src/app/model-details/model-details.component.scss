@@ -1,0 +1,118 @@
+.model-item {
+  height: 100%;
+  min-height: 300px;
+  width: 30vw;
+  margin: 20px 5px;
+  box-shadow: 9px 9px 10px -8px #000000;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  flex-wrap: nowrap;
+  @media (max-width: 1020px) {
+    width: 40vw;
+  }
+ @media (max-width: 720px) {
+    width: 95%;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    min-height: 30px;
+    background: #37394e;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p {
+      &:nth-child(1) {
+        font-size: 0.5em;
+        font-weight: lighter;
+      }
+      &:nth-child(2) {
+        font-weight: bold;
+      }
+    }
+  }
+  .picture {
+    min-height: 250px;
+    background: #ffffff;
+    position: relative;
+    img{
+      width: 100%;
+      object-fit: contain;
+    }
+    .canvas{
+      width: 100%;
+      object-fit: contain;
+    }
+    .downloads {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .square-details {
+        min-width: 30px;
+        height: 30px;
+        padding: 5px 10px;
+        color: #ffffff;
+        background: #37394e;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          font-weight: bold;
+          font-size: 0.9em;
+        }
+      }
+      .label {
+        font-size: 0.6em;
+        font-weight: lighter;
+      }
+    }
+  }
+  .details {
+    flex-grow: 1;
+    min-height: 100px;
+    background: #37394e;
+    color: #ffffff;
+    padding: 5px 10px;
+    .name {
+      color: #eba115;
+      font-size: 1.5em;
+      font-weight: bolder;
+    }
+    p {
+      font-weight: lighter;
+    }
+  }
+  .footer {
+    min-height: 30px;
+    background: #eba115;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin: 0 5px;
+        font-size: 0.8em;
+        font-weight: lighter;
+        color: #ffffff;
+        &:nth-child(1) {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

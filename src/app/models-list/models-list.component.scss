@@ -1,0 +1,28 @@
+.model-list {
+  height: 80vh;
+  overflow-y: scroll;
+  align-items: stretch;
+  .items {
+    @media (max-width: 720px) {
+      width: 95%;
+    }
+  }
+}
+.close{
+  cursor: pointer;
+}
+.actions {
+  transition: all 0.5s;
+}
+
+.actions__show {
+  opacity: 1;
+  height: auto;
+  transform: translateX(0);
+}
+
+.actions__hidden {
+  height: 0;
+  opacity: 0;
+  transform: translateX(-100vw);
+}
