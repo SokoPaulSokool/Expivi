@@ -25,6 +25,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CachingInterceptorService } from './services/general/cache/caching-interceptor.service';
 import { RequestInterceptorService } from './services/general/request/request-interceptor.service';
 import { ModelsListComponent } from './models-list/models-list.component';
+import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ModelsListComponent } from './models-list/models-list.component';
     ModelDetailsComponent,
     AvatorsComponent,
     ModelsListComponent,
+    ConfirmDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

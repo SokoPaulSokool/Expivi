@@ -24,4 +24,17 @@ export class RequestService {
       options
     );
   }
+  put(endpoint: string, data: object): Observable<any> {
+    return this.http.put(`${environment.backendUrl}/${endpoint}`, {
+      ...data,
+    });
+  }
+  patch(endpoint: string, data: object): Observable<any> {
+    return this.http.patch(`${environment.backendUrl}/${endpoint}`, {
+      ...data,
+    });
+  }
+  delete( endpoint: string, id: string): Observable<any> {
+    return this.http.delete(`${environment.backendUrl}/${endpoint}/${id}`);
+  }
 }

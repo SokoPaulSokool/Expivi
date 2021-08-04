@@ -10,8 +10,17 @@ import { RequestService } from '../general/request/request.service';
 export class ModelsService {
   constructor(private request: RequestService) {}
 
-  // Fetch model details fromm the backend
+  // Fetch model details from the backend
   getModels(): Observable<ModelsDetails[]> {
     return this.request.get(`api/items`, {});
+  }
+
+  // Add model details to the backend
+  createModel(details: ModelsDetails): Observable<String> {
+    return this.request.post(`api/items`, details);
+  }
+  // Fetch model details from the backend
+  deleteModel(slug: string): Observable<String> {
+    return this.request.delete(`api/items`, slug);
   }
 }

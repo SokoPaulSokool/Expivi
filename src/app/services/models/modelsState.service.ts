@@ -5,6 +5,7 @@ import { StateService } from '../general/state/state.service';
 import { ModelsState } from '../../interfaces/models-state';
 import { ModelsService } from './models.service';
 import { ModelsDetails } from '../../interfaces/models-details';
+import { ToastrService } from 'ngx-toastr';
 
 const initialState: ModelsState = {
   models: [],
@@ -14,7 +15,10 @@ const initialState: ModelsState = {
   providedIn: 'root',
 })
 export class ModelsStateService extends StateService<ModelsState> {
-  constructor(private modelsService: ModelsService) {
+  constructor(
+    public modelsService: ModelsService,
+    public toastr: ToastrService
+  ) {
     super(initialState);
   }
 
@@ -44,5 +48,22 @@ export class ModelsStateService extends StateService<ModelsState> {
   setAvators(avators: String[]) {
     // Update state of avators
     this.setAvatorsState(avators);
+  }
+
+  deleteModel(modelsDetails: ModelsDetails) {
+    // Subscribe to deleteModel and update state
+    this.modelsService
+      .deleteModel(modelsDetails.slug)
+      .subscribe((results: any) => {
+        if (results === 'success') {
+          // Fetch models after deleting
+          this.getModels();
+          this.toastr.success(
+            `'${modelsDetails.name}' was successfully deleted"`
+          );
+        } else {
+          this.toastr.error(`Failed to delete '${modelsDetails.name}'"`);
+        }
+      });
   }
 }

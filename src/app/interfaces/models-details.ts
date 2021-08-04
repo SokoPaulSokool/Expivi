@@ -1,10 +1,10 @@
 export interface ModelsDetails {
-  avatar: String;
-  category: String;
-  description: String;
+  avatar: string;
+  category: string;
+  description: string;
   downloads: number;
   license: String;
-  name: String;
-  slug: String;
+  name: string;
+  slug: string;
   vertices: number;
 }

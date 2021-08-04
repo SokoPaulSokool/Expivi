@@ -40,8 +40,6 @@ export class AppComponent {
   openLoginDialog() {
     this.dialog.open(LoginDialogComponent, {
       data: {
-        selectedTab: 3,
-        currentFarmer: 'element',
       },
       disableClose: false,
       panelClass: 'myapp-no-padding-dialog',

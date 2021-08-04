@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { ToastrModule } from 'ngx-toastr';
 import { MockRequestService } from 'src/app/helper/mock-helpers';
 import { RequestService } from '../general/request/request.service';
 
@@ -10,6 +11,9 @@ describe('ModelsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports:[ ToastrModule.forRoot({
+        preventDuplicates: true,
+      }),],
       providers: [{ provide: RequestService, useClass: MockRequestService }],
     });
     service = TestBed.inject(ModelsStateService);
