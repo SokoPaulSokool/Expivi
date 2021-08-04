@@ -41,7 +41,7 @@ export class AppComponent {
     this.dialog.open(LoginDialogComponent, {
       data: {
       },
-      disableClose: false,
+      disableClose: true,
       panelClass: 'myapp-no-padding-dialog',
       minHeight: '20vh',
       minWidth: '50vw',
