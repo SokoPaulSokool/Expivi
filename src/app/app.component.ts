@@ -3,8 +3,7 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthStateService } from './services/auth/authState.service';
 import { ModelsStateService } from './services/models/modelsState.service';
-import { ModelsDetails } from './interfaces/models-details';
-import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -30,7 +29,7 @@ export class AppComponent {
     // Opens the login model if the user is not logged in
     this.authStateService.isLoggedIn$.subscribe((isLoggedIn) => {
       if (!isLoggedIn) {
-        this.openDialog();
+        this.openLoginDialog();
         this.modelStateService.setModelsState([]);
         this.modelStateService.setAvators([]);
       }
@@ -38,13 +37,13 @@ export class AppComponent {
   }
 
   // Opens the login dialog
-  openDialog() {
+  openLoginDialog() {
     this.dialog.open(LoginDialogComponent, {
       data: {
         selectedTab: 3,
         currentFarmer: 'element',
       },
-      disableClose: true,
+      disableClose: false,
       panelClass: 'myapp-no-padding-dialog',
       minHeight: '20vh',
       minWidth: '50vw',

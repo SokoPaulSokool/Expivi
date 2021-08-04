@@ -13,4 +13,18 @@ describe('CacheService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should set and get cache', () => {
+    service.set("/data",{data:"data"},new Date())
+   const res =  service.get("/data")
+    expect(res).toEqual({data:"data"});
+  });
+
+  it('should delete cache', () => {
+    service.set("/data",{data:"data"},new Date())
+    service.delete("/data")
+   const res =  service.get("/data")
+    expect(res).toEqual(null);
+  });
+
 });

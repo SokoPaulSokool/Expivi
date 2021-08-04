@@ -37,7 +37,7 @@ export class LoginDialogComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authStateService.login(email, password );
+      this.authStateService.login(email, password);
     }
   }
 }

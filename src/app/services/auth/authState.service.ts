@@ -13,7 +13,7 @@ const initialState: LoginState = {
 export class AuthStateService extends StateService<LoginState> {
   isLoggedIn$: Observable<Boolean> = this.select((state) => state.isLoggedIn);
 
-  constructor(private auth: AuthService) {
+  constructor(public auth: AuthService) {
     super(initialState);
   }
 
@@ -38,6 +38,7 @@ export class AuthStateService extends StateService<LoginState> {
       }
     });
   }
+
   logOut() {
     // Subscribe to logOut and update state
     this.auth.logOut().subscribe((results) => {

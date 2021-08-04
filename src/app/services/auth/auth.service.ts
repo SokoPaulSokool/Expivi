@@ -7,7 +7,7 @@ import { RequestService } from '../general/request/request.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private request: RequestService) {}
+  constructor(public request: RequestService) {}
 
   // Send request to login endpoint
   login(data: any): Observable<any> {

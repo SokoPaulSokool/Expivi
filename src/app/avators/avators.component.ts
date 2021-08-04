@@ -15,7 +15,7 @@ export class AvatorsComponent implements OnInit {
 
   canvasContext: CanvasRenderingContext2D | undefined;
 
-  constructor(private modelsStateService: ModelsStateService) {}
+  constructor(public modelsStateService: ModelsStateService) {}
 
   ngOnInit(): void {}
 
@@ -24,6 +24,7 @@ export class AvatorsComponent implements OnInit {
     this.modelsStateService.avators$.subscribe((results) => {
       this.avators = results;
       this.updateCanvas();
+      console.log(results)
     });
   }
 

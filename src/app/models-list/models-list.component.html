@@ -1,5 +1,7 @@
 <div class="w-100 d-flex flex-column">
-  <div class="close" (click)="toggleShowFilters()">{{isShowFilters?'Hide Filters':"Show Filters"}}</div>
+  <div class="close" (click)="toggleShowFilters()">
+    {{ isShowFilters ? "Hide Filters" : "Show Filters" }}
+  </div>
   <div
     class="row actions"
     [ngClass]="{
@@ -10,6 +12,7 @@
     <mat-form-field class="col-md-3 col-6" appearance="fill">
       <mat-label>Search</mat-label>
       <input
+        id="search"
         matInput
         placeholder="Ex. Pizza"
         [value]="searchValue"
@@ -20,6 +23,7 @@
     <mat-form-field class="col-md-3 col-6" appearance="fill">
       <mat-label>Search By</mat-label>
       <mat-select
+        id="searchBy"
         [(value)]="searchByKey"
         (selectionChange)="handleSearchByKeyChange($event)"
       >
@@ -31,6 +35,7 @@
     <mat-form-field class="col-md-3 col-6" appearance="fill">
       <mat-label>Sort By</mat-label>
       <mat-select
+      id="sortBy"
         [(value)]="sortByKey"
         (selectionChange)="handleSortByChange($event)"
       >
@@ -42,6 +47,7 @@
     <mat-form-field class="col-md-3 col-6" appearance="fill">
       <mat-label>Sort Order</mat-label>
       <mat-select
+      id="sortOrder"
         [(value)]="sortOrder"
         (selectionChange)="handleSortOrderChange($event)"
       >
