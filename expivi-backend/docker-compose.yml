@@ -1,0 +1,65 @@
+version: "3.9"
+services:
+    composer:
+        image: composer:2.1
+        volumes:
+            - "./:/app"
+        tty: true
+        stdin_open: true
+        entrypoint: composer
+        command: install
+        networks:
+            - expivi
+    database:
+        image: mariadb:10.6
+        logging:
+            driver: "none"
+        environment:
+            MARIADB_ROOT_PASSWORD: "xpv-pass"
+            MARIADB_DATABASE: "expivi"
+            MARIADB_USER: "xpv-user"
+            MARIADB_PASSWORD: "xpv-pass"
+            MARIADB_INITDB_SKIP_TZINFO: "disable"
+        networks:
+            - expivi
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        logging:
+            driver: "none"
+        ports:
+            - 3307:80
+        environment:
+            PMA_HOST: database
+            PMA_USER: root
+            PMA_PASSWORD: "xpv-pass"
+        networks:
+            - expivi
+    php:
+        build:
+            context: .docker/php/
+            dockerfile: Dockerfile
+        user: '$XPV_UID'
+        volumes:
+            - "./:/opt/app"
+            - ".docker/php/php.ini:/usr/local/etc/php/php.ini"
+        environment:
+            PHP_IDE_CONFIG: "serverName=localhost"
+            XDG_CONFIG_HOME: "/opt/int"
+        depends_on:
+            - database
+        networks:
+            - expivi
+    webserver:
+        image: nginx:stable-alpine
+        ports:
+            - 3000:8080
+        volumes:
+            - "./:/opt/app"
+            - "./.docker/nginx/xpv.conf:/etc/nginx/conf.d/xpv.conf"
+        depends_on:
+            - php
+        networks:
+            - expivi
+networks:
+    expivi:
